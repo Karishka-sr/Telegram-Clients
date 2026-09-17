@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Клиенты Telegram — все ссылки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #0a0e17;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --border: #1e2d42;
+    --tg-blue: #2AABEE;
+    --tg-blue-dim: rgba(42,171,238,0.12);
+    --tg-blue-hover: rgba(42,171,238,0.2);
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --green: #22c55e;
+    --yellow: #eab308;
+    --red: #ef4444;
+    --orange: #f97316;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  header {
+    background: linear-gradient(135deg, #0d1f3a 0%, #0a1628 50%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 400px; height: 300px;
+    background: radial-gradient(ellipse, rgba(42,171,238,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .plane {
+    font-size: 48px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  h1 {
+    font-size: clamp(22px, 5vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+  h1 span { color: var(--tg-blue); }
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-n { font-size: 24px; font-weight: 700; color: var(--tg-blue); }
+  .stat-l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+
+  main { max-width: 900px; margin: 0 auto; padding: 32px 16px 64px; }
+
+  .section-title {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--tg-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin: 40px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-title:first-child { margin-top: 0; }
+
+  .client-grid {
+    display: grid;
+    gap: 8px;
+  }
+  .client-row {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .client-row:hover { background: var(--surface2); border-color: rgba(42,171,238,0.3); }
+
+  .client-icon {
+    width: 38px; height: 38px;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    background: var(--tg-blue-dim);
+  }
+
+  .client-info { flex: 1; min-width: 0; }
+  .client-name {
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .client-desc {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .badges { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
+  .badge {
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .badge-android { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); }
+  .badge-ios { background: rgba(99,102,241,0.15); color: #a5b4fc; border: 1px solid rgba(99,102,241,0.2); }
+  .badge-win { background: rgba(42,171,238,0.12); color: #7dd3fc; border: 1px solid rgba(42,171,238,0.2); }
+  .badge-mac { background: rgba(209,213,219,0.08); color: #d1d5db; border: 1px solid rgba(209,213,219,0.15); }
+  .badge-lin { background: rgba(234,179,8,0.12); color: #fde047; border: 1px solid rgba(234,179,8,0.2); }
+  .badge-web { background: rgba(168,85,247,0.12); color: #c4b5fd; border: 1px solid rgba(168,85,247,0.2); }
+  .badge-cli { background: rgba(100,116,139,0.2); color: #94a3b8; border: 1px solid rgba(100,116,139,0.25); }
+  .badge-disc { background: rgba(239,68,68,0.1); color: #fca5a5; border: 1px solid rgba(239,68,68,0.15); }
+
+  .links { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+
+  a.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 11px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  a.btn-primary {
+    background: var(--tg-blue);
+    color: #000;
+  }
+  a.btn-primary:hover { background: #5cc8f5; }
+  a.btn-ghost {
+    background: var(--tg-blue-dim);
+    color: var(--tg-blue);
+    border: 1px solid rgba(42,171,238,0.25);
+  }
+  a.btn-ghost:hover { background: var(--tg-blue-hover); }
+  a.btn-tg {
+    background: rgba(42,171,238,0.08);
+    color: #7dd3fc;
+    border: 1px solid rgba(42,171,238,0.18);
+  }
+  a.btn-tg:hover { background: rgba(42,171,238,0.16); }
+
+  .note {
+    background: rgba(234,179,8,0.08);
+    border: 1px solid rgba(234,179,8,0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: #fde047;
+    margin-top: 36px;
+    line-height: 1.6;
+  }
+  .note strong { font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .client-row { flex-wrap: wrap; }
+    .links { width: 100%; justify-content: flex-start; }
+    .badges { display: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <span class="plane">✈️</span>
+  <h1>Все клиенты <span>Telegram</span></h1>
+  <p class="subtitle">// официальные · форки · CLI · мультиплатформенные</p>
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-n">9</div><div class="stat-l">Официальных</div></div>
+    <div class="stat"><div class="stat-n">26</div><div class="stat-l">Android-форков</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">iOS-форков</div></div>
+    <div class="stat"><div class="stat-n">9</div><div class="stat-l">Desktop-форков</div></div>
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">CLI/Terminal</div></div>
+  </div>
+</header>
+
+<main>
+
+<!-- OFFICIAL -->
+<div class="section-title">🟢 Официальные клиенты</div>
+<div class="client-grid">
+
+  <div class="client-row">
+    <div class="client-icon">✈️</div>
+    <div class="client-info">
+      <div class="client-name">Telegram</div>
+      <div class="client-desc">Основной официальный клиент — Android, iOS, Desktop, Web</div>
+    </div>
+    <div class="badges">
+      <span class="badge badge-android">Android</span>
+      <span class="badge badge-ios">iOS</span>
+      <span class="badge badge-win">Win</span>
+      <span class="badge badge-mac">Mac</span>
+      <span class="badge badge-lin">Linux</span>
+      <span class="badge badge-web">Web</span>
+    </div>
+    <div class="links">
+      <a class="btn btn-primary" href="https://telegram.org/apps" target="_blank">↗ telegram.org</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">⚡</div>
+    <div class="client-info">
+      <div class="client-name">Telegram X</div>
+      <div class="client-desc">Экспериментальный официальный клиент для Android</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=org.thunderdog.challegram" target="_blank">Play Store</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🗔</div>
+    <div class="client-info">
+      <div class="client-name">Telegram Desktop</div>
+      <div class="client-desc">Официальный десктопный клиент</div>
+    </div>
+    <div class="badges">
+      <span class="badge badge-win">Win</span>
+      <span class="badge badge-mac">Mac</span>
+      <span class="badge badge-lin">Linux</span>
+    </div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://desktop.telegram.org/" target="_blank">desktop.telegram.org</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🍎</div>
+    <div class="client-info">
+      <div class="client-name">Telegram for macOS (нативный)</div>
+      <div class="client-desc">Swift-клиент с поддержкой macOS-функций</div>
+    </div>
+    <div class="badges"><span class="badge badge-mac">Mac</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://macos.telegram.org/" target="_blank">macos.telegram.org</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">📦</div>
+    <div class="client-info">
+      <div class="client-name">Telegram Desktop Portable</div>
+      <div class="client-desc">Портабельная версия, не требует установки</div>
+    </div>
+    <div class="badges">
+      <span class="badge badge-win">Win</span>
+      <span class="badge badge-mac">Mac</span>
+      <span class="badge badge-lin">Linux</span>
+    </div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://telegram.org/dl/desktop/win_portable" target="_blank">Windows</a>
+      <a class="btn btn-ghost" href="https://telegram.org/dl/desktop/linux_portable" target="_blank">Linux</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🌐</div>
+    <div class="client-info">
+      <div class="client-name">Telegram WebK</div>
+      <div class="client-desc">Официальный веб-клиент (K-версия)</div>
+    </div>
+    <div class="badges"><span class="badge badge-web">Web</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://webk.telegram.org/" target="_blank">webk.telegram.org</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🌍</div>
+    <div class="client-info">
+      <div class="client-name">Telegram WebA</div>
+      <div class="client-desc">Официальный веб-клиент (A-версия)</div>
+    </div>
+    <div class="badges"><span class="badge badge-web">Web</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://web.telegram.org/" target="_blank">web.telegram.org</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🔵</div>
+    <div class="client-info">
+      <div class="client-name">Telegram для Android (прямой APK)</div>
+      <div class="client-desc">Без ограничений Google Play, обновляется быстрее</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://telegram.org/android" target="_blank">telegram.org/android</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🌐</div>
+    <div class="client-info">
+      <div class="client-name">Telegram Chrome App</div>
+      <div class="client-desc">Для Chromium-браузеров</div>
+    </div>
+    <div class="badges"><span class="badge badge-web">Chrome</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://chrome.google.com/webstore/detail/telegram/clhhggbfdinjmjhajaheehoeibfljjno" target="_blank">Chrome Web Store</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ANDROID -->
+<div class="section-title">🤖 Неофициальные — Android</div>
+<div class="client-grid">
+
+  <div class="client-row">
+    <div class="client-icon">➕</div>
+    <div class="client-info">
+      <div class="client-name">Plus Messenger</div>
+      <div class="client-desc">Вкладки, темы, до 10 аккаунтов, 50+ млн загрузок</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span><span class="badge badge-ios">iOS</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=org.telegram.plus" target="_blank">Play Store</a>
+      <a class="btn btn-ghost" href="https://apps.apple.com/app/plus-messenger/id782980478" target="_blank">App Store</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">😊</div>
+    <div class="client-info">
+      <div class="client-name">Nicegram</div>
+      <div class="client-desc">Приватность, мульти-аккаунт, AI, крипто-кошелёк</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span><span class="badge badge-ios">iOS</span><span class="badge badge-mac">Mac</span></div>
+    <div class="links">
+      <a class="btn btn-primary" href="https://nicegram.app/" target="_blank">nicegram.app</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🅱️</div>
+    <div class="client-info">
+      <div class="client-name">BGram</div>
+      <div class="client-desc">Расширенные вкладки, TOR, скрытые чаты — последняя версия 10.0.4</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span><span class="badge badge-disc">Не обновляется</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/BGramChannel" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🍒</div>
+    <div class="client-info">
+      <div class="client-name">Cherrygram</div>
+      <div class="client-desc">Компактный форк, кастомная камера, открытый код</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/arsLan4k1390/Cherrygram/releases" target="_blank">GitHub Releases</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🐱</div>
+    <div class="client-info">
+      <div class="client-name">Nekogram</div>
+      <div class="client-desc">Открытый код, полезные моды без излишков</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/Nekogram/Nekogram/releases" target="_blank">GitHub Releases</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🅽</div>
+    <div class="client-info">
+      <div class="client-name">Nagram</div>
+      <div class="client-desc">Объединяет функции NekoX, exteraGram, MDGram; прокси VMess/SS/SSR</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/NextAlone/Nagram/releases" target="_blank">GitHub Releases</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🆇</div>
+    <div class="client-info">
+      <div class="client-name">Nagram X</div>
+      <div class="client-desc">Форк Nagram с дополнительными функциями</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/NagramX/Nagram/releases" target="_blank">GitHub Releases</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">👻</div>
+    <div class="client-info">
+      <div class="client-name">AyuGram (Android)</div>
+      <div class="client-desc">Режим призрака, история удалённых, пересылка из защищённых чатов</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/AyuGram/AyuGram4A/releases" target="_blank">GitHub Releases</a>
+      <a class="btn btn-tg" href="https://t.me/ayugram1338" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">⚙️</div>
+    <div class="client-info">
+      <div class="client-name">exteraGram</div>
+      <div class="client-desc">Улучшенный плеер, камера, переводчик, Material-дизайн</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/exteraSquad/exteraGram/releases" target="_blank">GitHub Releases</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🍴</div>
+    <div class="client-info">
+      <div class="client-name">Forkgram</div>
+      <div class="client-desc">Чистый форк официального приложения, F-Droid</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/Forkgram/TelegramAndroid/releases" target="_blank">GitHub</a>
+      <a class="btn btn-ghost" href="https://f-droid.org/packages/org.telegram.messenger" target="_blank">F-Droid</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🐙</div>
+    <div class="client-info">
+      <div class="client-name">OctoGram</div>
+      <div class="client-desc">Активно поддерживается, кастомизация, AI-интеграция, двойное дно</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/OctoGramApp/OctoGram/releases" target="_blank">GitHub Releases</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🪐</div>
+    <div class="client-info">
+      <div class="client-name">Catogram</div>
+      <div class="client-desc">Форк с UI-улучшениями, основа для OctoGram</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/catogramx" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">📊</div>
+    <div class="client-info">
+      <div class="client-name">Graph Messenger</div>
+      <div class="client-desc">Форк Telegram X с расширенными настройками</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span><span class="badge badge-ios">iOS</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.graph.messenger" target="_blank">Play Store</a>
+      <a class="btn btn-ghost" href="https://apps.apple.com/app/graph-messenger/id1510566798" target="_blank">App Store</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🤖</div>
+    <div class="client-info">
+      <div class="client-name">iMe Messenger</div>
+      <div class="client-desc">AI-ассистент, крипто-кошелёк, музыкальный плеер, перевод 100+ языков</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span><span class="badge badge-ios">iOS</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.imeapp.messenger" target="_blank">Play Store</a>
+      <a class="btn btn-ghost" href="https://apps.apple.com/app/ime-messenger/id1346773251" target="_blank">App Store</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">📹</div>
+    <div class="client-info">
+      <div class="client-name">Vidogram</div>
+      <div class="client-desc">Видеозвонки между пользователями, онлайн-ТВ, вкладки чатов</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=org.vidogram.messenger" target="_blank">Play Store</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🐦</div>
+    <div class="client-info">
+      <div class="client-name">Mercurygram</div>
+      <div class="client-desc">Лёгкий форк без Google-сервисов, F-Droid</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://f-droid.org/packages/it.belloworld.mercurygram/" target="_blank">F-Droid</a>
+      <a class="btn btn-ghost" href="https://github.com/drizzt/Mercurygram/releases" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🚀</div>
+    <div class="client-info">
+      <div class="client-name">Turbotel</div>
+      <div class="client-desc">На основе web-API, уникальные функции</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/turbotel" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🛡️</div>
+    <div class="client-info">
+      <div class="client-name">Telegram FOSS</div>
+      <div class="client-desc">Полностью открытый код, без Google-зависимостей (F-Droid)</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://f-droid.org/packages/org.telegram.messenger.web/" target="_blank">F-Droid</a>
+      <a class="btn btn-ghost" href="https://github.com/Telegram-FOSS-Team/Telegram-FOSS/releases" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🔒</div>
+    <div class="client-info">
+      <div class="client-name">Turrit</div>
+      <div class="client-desc">Безопасный клиент на Telegram API</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://play.google.com/store/apps/details?id=com.turrit.android" target="_blank">Play Store</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🐈</div>
+    <div class="client-info">
+      <div class="client-name">moeGram X</div>
+      <div class="client-desc">Аниме-форк с кастомизацией и дополнительными функциями</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/moeCrafters/moeGramX/releases" target="_blank">GitHub Releases</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🥷</div>
+    <div class="client-info">
+      <div class="client-name">Ninjagram</div>
+      <div class="client-desc">Режим призрака, расширенная приватность</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/ninjagram_app" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🐦</div>
+    <div class="client-info">
+      <div class="client-name">Pigeongram X</div>
+      <div class="client-desc">Форк с расширенными настройками конфиденциальности</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/pigeongram" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">📷</div>
+    <div class="client-info">
+      <div class="client-name">Telegraher</div>
+      <div class="client-desc">Расширенная кастомизация, фото/видео функции, персидский форк</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/telegraher" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🗃️</div>
+    <div class="client-info">
+      <div class="client-name">MDGram / MDGramYou</div>
+      <div class="client-desc">Material-дизайн, настройки интерфейса</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/MDGramYou" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🔈</div>
+    <div class="client-info">
+      <div class="client-name">SoundGram</div>
+      <div class="client-desc">Акцент на аудио и медиафункциях</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/soundgram_official" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🏃</div>
+    <div class="client-info">
+      <div class="client-name">PaceGram</div>
+      <div class="client-desc">Неофициальный клиент на Telegram API</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/pacegram" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">⬛</div>
+    <div class="client-info">
+      <div class="client-name">MonoGram</div>
+      <div class="client-desc">Минималистичный форк</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/monogram_app" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">❌</div>
+    <div class="client-info">
+      <div class="client-name">Nekogram X / NekoX</div>
+      <div class="client-desc">Прекращён — архив на GitHub (был базой для Nagram)</div>
+    </div>
+    <div class="badges"><span class="badge badge-android">Android</span><span class="badge badge-disc">Архив</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/NekoX-Dev/NekoX/releases" target="_blank">GitHub (архив)</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- iOS -->
+<div class="section-title">🍎 Неофициальные — iOS</div>
+<div class="client-grid">
+
+  <div class="client-row">
+    <div class="client-icon">😊</div>
+    <div class="client-info">
+      <div class="client-name">Nicegram</div>
+      <div class="client-desc">Приватность, AI, крипто-кошелёк, нет ограничений App Store</div>
+    </div>
+    <div class="badges"><span class="badge badge-ios">iOS</span><span class="badge badge-mac">Mac</span></div>
+    <div class="links">
+      <a class="btn btn-primary" href="https://apps.apple.com/app/nicegram/id1608870673" target="_blank">App Store</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">⚡</div>
+    <div class="client-info">
+      <div class="client-name">Swiftgram</div>
+      <div class="client-desc">Неограниченные аккаунты, переводчик, фильтр сообщений, Apple Watch</div>
+    </div>
+    <div class="badges"><span class="badge badge-ios">iOS</span><span class="badge badge-mac">Mac</span></div>
+    <div class="links">
+      <a class="btn btn-primary" href="https://apps.apple.com/app/swiftgram/id6471879502" target="_blank">App Store</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">📊</div>
+    <div class="client-info">
+      <div class="client-name">Graph Messenger</div>
+      <div class="client-desc">Форк с расширенными настройками конфиденциальности</div>
+    </div>
+    <div class="badges"><span class="badge badge-ios">iOS</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://apps.apple.com/app/graph-messenger/id1510566798" target="_blank">App Store</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🤖</div>
+    <div class="client-info">
+      <div class="client-name">iMe Messenger</div>
+      <div class="client-desc">AI, крипто, музыкальный плеер, перевод</div>
+    </div>
+    <div class="badges"><span class="badge badge-ios">iOS</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://apps.apple.com/app/ime-messenger/id1346773251" target="_blank">App Store</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">➕</div>
+    <div class="client-info">
+      <div class="client-name">Plus Messenger (iOS)</div>
+      <div class="client-desc">Вкладки, темы, до 10 аккаунтов</div>
+    </div>
+    <div class="badges"><span class="badge badge-ios">iOS</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://apps.apple.com/app/plus-messenger/id782980478" target="_blank">App Store</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- DESKTOP -->
+<div class="section-title">🖥️ Неофициальные — Desktop</div>
+<div class="client-grid">
+
+  <div class="client-row">
+    <div class="client-icon">🦄</div>
+    <div class="client-info">
+      <div class="client-name">Unigram</div>
+      <div class="client-desc">Нативный Windows UWP, интеграция с Windows 10/11, MS Store</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://apps.microsoft.com/store/detail/unigram/9N97ZCKPD60Q" target="_blank">Microsoft Store</a>
+      <a class="btn btn-ghost" href="https://github.com/UnigramDev/Unigram/releases" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">64</div>
+    <div class="client-info">
+      <div class="client-name">64Gram</div>
+      <div class="client-desc">Неофициальный Desktop-форк с 64-битными оптимизациями</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span><span class="badge badge-mac">Mac</span><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/TDesktop-x64/tdesktop/releases" target="_blank">GitHub Releases</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">👻</div>
+    <div class="client-info">
+      <div class="client-name">AyuGram Desktop</div>
+      <div class="client-desc">Режим призрака, история удалённых, кастомизация</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span><span class="badge badge-mac">Mac</span><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/AyuGram/AyuGramDesktop/releases" target="_blank">GitHub Releases</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🎨</div>
+    <div class="client-info">
+      <div class="client-name">Materialgram</div>
+      <div class="client-desc">Material Design, libadwaita, иконки Material Icons</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/kukuruzka165/materialgram/releases" target="_blank">GitHub Releases</a>
+      <a class="btn btn-ghost" href="https://flathub.org/apps/io.github.kukuruzka165.materialgram" target="_blank">Flathub</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🌨️</div>
+    <div class="client-info">
+      <div class="client-name">Yukigram</div>
+      <div class="client-desc">Патч-форк с функциями из 64Gram и Kotatogram</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span><span class="badge badge-mac">Mac</span><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/YukiGram/yukigram/releases" target="_blank">GitHub Releases</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">✈️</div>
+    <div class="client-info">
+      <div class="client-name">Paper Plane</div>
+      <div class="client-desc">GTK4 / libadwaita клиент для GNOME Linux</div>
+    </div>
+    <div class="badges"><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/paper-plane-developers/paper-plane/releases" target="_blank">GitHub Releases</a>
+      <a class="btn btn-ghost" href="https://flathub.org/apps/app.drey.PaperPlane" target="_blank">Flathub</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🖥️</div>
+    <div class="client-info">
+      <div class="client-name">iGram Desktop</div>
+      <div class="client-desc">Неофициальный Windows-форк с вкладками и настройками</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/igramdesktop" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🐸</div>
+    <div class="client-info">
+      <div class="client-name">Kotatogram Desktop</div>
+      <div class="client-desc">Локальные папки, расширенные фильтры — прекращён</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span><span class="badge badge-mac">Mac</span><span class="badge badge-lin">Linux</span><span class="badge badge-disc">Архив</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/kotatogram/kotatogram-desktop/releases" target="_blank">GitHub (архив)</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🔬</div>
+    <div class="client-info">
+      <div class="client-name">Attogram</div>
+      <div class="client-desc">Экспериментальный Desktop-форк</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span><span class="badge badge-mac">Mac</span><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/attogram_app" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- CLI -->
+<div class="section-title">⌨️ CLI / Terminal</div>
+<div class="client-grid">
+
+  <div class="client-row">
+    <div class="client-icon">$_</div>
+    <div class="client-info">
+      <div class="client-name">Telegram CLI</div>
+      <div class="client-desc">Интерфейс командной строки с readline</div>
+    </div>
+    <div class="badges"><span class="badge badge-cli">CLI</span><span class="badge badge-lin">Linux</span><span class="badge badge-mac">Mac</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/kenorb-contrib/tg" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">💬</div>
+    <div class="client-info">
+      <div class="client-name">nchat</div>
+      <div class="client-desc">Терминальный клиент для Linux и macOS (TUI), также поддерживает WhatsApp</div>
+    </div>
+    <div class="badges"><span class="badge badge-cli">CLI</span><span class="badge badge-lin">Linux</span><span class="badge badge-mac">Mac</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/d99kris/nchat" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">📺</div>
+    <div class="client-info">
+      <div class="client-name">TelegramTUI</div>
+      <div class="client-desc">Текстовый интерфейс (TUI) для Telegram</div>
+    </div>
+    <div class="badges"><span class="badge badge-cli">CLI</span><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/nickcoutsos/telegramtui" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🖥️</div>
+    <div class="client-info">
+      <div class="client-name">Termgram</div>
+      <div class="client-desc">CLI-клиент для работы в терминале</div>
+    </div>
+    <div class="badges"><span class="badge badge-cli">CLI</span><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-tg" href="https://t.me/termgram" target="_blank">Telegram-канал</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- MULTI -->
+<div class="section-title">🌐 Мультиплатформенные агрегаторы</div>
+<div class="client-grid">
+
+  <div class="client-row">
+    <div class="client-icon">🦎</div>
+    <div class="client-info">
+      <div class="client-name">Franz</div>
+      <div class="client-desc">Открытый код, агрегирует многие мессенджеры включая Telegram</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span><span class="badge badge-mac">Mac</span><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://meetfranz.com/" target="_blank">meetfranz.com</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🐹</div>
+    <div class="client-info">
+      <div class="client-name">Hamsket</div>
+      <div class="client-desc">GPL-альтернатива Franz, форк Rambox</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span><span class="badge badge-mac">Mac</span><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://github.com/TheGoddessInari/hamsket" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">🐦</div>
+    <div class="client-info">
+      <div class="client-name">Pidgin (плагин tdlib)</div>
+      <div class="client-desc">Мультипротокольный IM-клиент с Telegram-плагином через TDLib</div>
+    </div>
+    <div class="badges"><span class="badge badge-win">Win</span><span class="badge badge-lin">Linux</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://pidgin.im/" target="_blank">pidgin.im</a>
+      <a class="btn btn-ghost" href="https://github.com/ars3niy/tdlib-purple" target="_blank">Плагин</a>
+    </div>
+  </div>
+
+  <div class="client-row">
+    <div class="client-icon">⛽</div>
+    <div class="client-info">
+      <div class="client-name">Telefuel</div>
+      <div class="client-desc">Telegram для команд и продуктивности</div>
+    </div>
+    <div class="badges"><span class="badge badge-web">Web</span><span class="badge badge-win">Win</span><span class="badge badge-mac">Mac</span></div>
+    <div class="links">
+      <a class="btn btn-ghost" href="https://telefuel.com/" target="_blank">telefuel.com</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="note">
+  ⚠️ <strong>Важно:</strong> Единственным официально одобренным сторонним клиентом остаётся Telegram X. Для остальных форков используйте официальные GitHub Releases или Telegram-каналы разработчиков — не скачивайте из неизвестных источников. Некоторые функции (режим призрака, сохранение удалённых) нарушают ToS Telegram.
+</div>
+
+</main>
+</body>
+</html>
